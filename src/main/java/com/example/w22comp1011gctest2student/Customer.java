@@ -68,7 +68,7 @@ public class Customer {
     };
 
     public boolean savedMoreThanFive(){
-        if(totalSavings() > 5)
+        if(totalSavings() >= 5)
             return true;
         return false;
     }

@@ -65,6 +65,11 @@ public class TableViewController implements Initializable {
     private void customersSavedOver5()
     {
         System.out.println("called method customersSavedOver5()");
+        tableView.getItems().clear();
+        ArrayList<Customer> customers = ReadJson.getCustomerFromJson("customers.json").getCustomers();
+        tableView.getItems().addAll(customers.stream().filter(e-> e.savedMoreThanFive() == true).collect(Collectors.toSet()));
+        rowsInTableLabel.setText(String.format("Rows Returned: %d", tableView.getItems().size()));
+
     }
 
     @FXML
@@ -95,7 +100,10 @@ public class TableViewController implements Initializable {
             msrpLabel.setText("Total Regular Price: $" + typeSelected.totalRegularPrice());
             saleLabel.setText("Total Regular Price: $" + typeSelected.totalPurchase());
             savingsLabel.setText("Total Regular Price: $" + typeSelected.totalSavings());
+
+
         });
+
 
     }
 }
