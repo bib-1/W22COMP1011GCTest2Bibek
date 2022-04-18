@@ -82,6 +82,9 @@ public class TableViewController implements Initializable {
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         totalPurchaseColumn.setCellValueFactory(new PropertyValueFactory<>("totalPurchase"));
 
+        //returning rows
+        rowsInTableLabel.setText(String.format("Rows Returned: %d", tableView.getItems().size()));
+
 
     }
 }
