@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 /**
  * Bibek Poudel
@@ -85,6 +86,16 @@ public class TableViewController implements Initializable {
         //returning rows
         rowsInTableLabel.setText(String.format("Rows Returned: %d", tableView.getItems().size()));
 
+        tableView.getSelectionModel().selectedItemProperty().addListener((obs, oldValue, typeSelected)->{
+            purchaseListView.getItems().clear();
+            ArrayList<Product> items= typeSelected.getPurchases();
+            if(items!= null)
+                purchaseListView.getItems().addAll(items);
+
+            msrpLabel.setText("Total Regular Price: $" + typeSelected.totalRegularPrice());
+            saleLabel.setText("Total Regular Price: $" + typeSelected.totalPurchase());
+            savingsLabel.setText("Total Regular Price: $" + typeSelected.totalSavings());
+        });
 
     }
 }

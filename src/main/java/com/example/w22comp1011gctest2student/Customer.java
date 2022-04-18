@@ -46,6 +46,15 @@ public class Customer {
         return  salesPrice;
     };
 
+    public double totalRegularPrice(){
+        double salesPrice = 0.00;
+        for (Product c: getPurchases()){
+            salesPrice +=  c.getSalePrice();
+        }
+        salesPrice = getPurchases().stream().mapToDouble(e -> e.getRegularPrice()).sum();
+        return  salesPrice;
+    };
+
     public String getTotalPurchase(){
         return String.format("$%.2f", totalPurchase());
     }
