@@ -41,4 +41,20 @@ public class Customer {
         salesPrice = getPurchases().stream().mapToDouble(e -> e.getSalePrice()).sum();
         return  salesPrice;
     };
+
+    public double totalSavings(){
+        double salesPrice = 0;
+        for (Product c: getPurchases()){
+            salesPrice +=  c.getSalePrice();
+        }
+        salesPrice = getPurchases().stream().mapToDouble(e -> e.getRegularPrice() - e.getSalePrice()).sum();
+        return  salesPrice;
+    };
+
+    public boolean savedMoreThanFive(){
+        if(totalSavings() > 5)
+            return true;
+        return false;
+    }
+
 }
