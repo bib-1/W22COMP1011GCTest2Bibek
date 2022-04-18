@@ -1,5 +1,8 @@
 package com.example.w22comp1011gctest2student;
 
+import com.google.gson.annotations.SerializedName;
+import javafx.fxml.FXML;
+
 import java.util.ArrayList;
 
 public class Customer {
