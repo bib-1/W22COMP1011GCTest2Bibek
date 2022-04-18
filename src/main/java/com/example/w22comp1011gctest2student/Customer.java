@@ -32,4 +32,13 @@ public class Customer {
     public ArrayList<Product> getPurchases() {
         return purchases;
     }
+
+    public double totalPurchase(){
+        double salesPrice = 0;
+        for (Product c: getPurchases()){
+            salesPrice +=  c.getSalePrice();
+        }
+        salesPrice = getPurchases().stream().mapToDouble(e -> e.getSalePrice()).sum();
+        return  salesPrice;
+    };
 }

@@ -29,7 +29,9 @@ public class ReadJson {
 
     public static void main(String[] args) {
         Business c = getCustomerFromJson("customers.json");
-        System.out.println(c.getCustomers());
+        System.out.println(c.getCustomers().get(0).totalPurchase());
+        System.out.println(c.getCustomers().get(0).getFirstName());
+
 
     }
 }
