@@ -6,7 +6,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.image.ImageView;
-
+/**
+ * Bibek Poudel
+ * 200455715
+ */
 public class TableViewController {
     @FXML
     private Label saleLabel;
