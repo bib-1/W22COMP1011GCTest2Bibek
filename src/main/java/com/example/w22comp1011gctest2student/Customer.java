@@ -46,6 +46,9 @@ public class Customer {
         return  salesPrice;
     };
 
+    public String getTotalPurchase(){
+        return String.format("$%.2f", totalPurchase());
+    }
     public double totalSavings(){
         double salesPrice = 0;
         for (Product c: getPurchases()){

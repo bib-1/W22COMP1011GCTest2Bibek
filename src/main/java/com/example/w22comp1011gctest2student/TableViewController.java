@@ -1,16 +1,23 @@
 package com.example.w22comp1011gctest2student;
 
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.ResourceBundle;
+
 /**
  * Bibek Poudel
  * 200455715
  */
-public class TableViewController {
+public class TableViewController implements Initializable {
     @FXML
     private Label saleLabel;
 
@@ -63,5 +70,18 @@ public class TableViewController {
     private void loadAllCustomers()
     {
         System.out.println("called method loadAllCustomers");
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        ArrayList<Customer> customers = ReadJson.getCustomerFromJson("customers.json").getCustomers();
+        tableView.getItems().addAll(customers);
+        idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+        totalPurchaseColumn.setCellValueFactory(new PropertyValueFactory<>("totalPurchase"));
+
+
     }
 }
