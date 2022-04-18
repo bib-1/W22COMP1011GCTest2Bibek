@@ -75,18 +75,27 @@ public class TableViewController implements Initializable {
     @FXML
     private void loadAllCustomers()
     {
-        System.out.println("called method loadAllCustomers");
-    }
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
         ArrayList<Customer> customers = ReadJson.getCustomerFromJson("customers.json").getCustomers();
+        tableView.getItems().clear();
         tableView.getItems().addAll(customers);
         idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
         firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
         lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
         totalPurchaseColumn.setCellValueFactory(new PropertyValueFactory<>("totalPurchase"));
+        rowsInTableLabel.setText(String.format("Rows Returned: %d", tableView.getItems().size()));
+    }
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+            ArrayList<Customer> customers = ReadJson.getCustomerFromJson("customers.json").getCustomers();
+            tableView.getItems().addAll(customers);
+            idColumn.setCellValueFactory(new PropertyValueFactory<>("id"));
+            firstNameColumn.setCellValueFactory(new PropertyValueFactory<>("firstName"));
+            lastNameColumn.setCellValueFactory(new PropertyValueFactory<>("lastName"));
+            phoneColumn.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
+            totalPurchaseColumn.setCellValueFactory(new PropertyValueFactory<>("totalPurchase"));
+
 
         //returning rows
         rowsInTableLabel.setText(String.format("Rows Returned: %d", tableView.getItems().size()));
